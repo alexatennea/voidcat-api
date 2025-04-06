@@ -1,0 +1,14 @@
+services:
+  voidcat-api:
+    image: voidcat-api
+    container_name: voidcat-api
+    build:
+      context: .
+      dockerfile: voidcat-api/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
+      - OpenAI__AssistantId=${OpenAI__AssistantId}
+      - OpenAI__ApiKey=${OpenAI__ApiKey}
+      - ConnectionStrings__VoidCat=${ConnectionStrings__VoidCat}
+    ports:
+      - "5001:8080"
