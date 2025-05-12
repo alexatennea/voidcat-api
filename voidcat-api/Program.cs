@@ -70,13 +70,10 @@ builder.Services.AddSwaggerGen();
 // CORS
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowSpecificOrigins", policy =>
+    options.AddPolicy("AllowAllOrigins", policy =>
     {
         policy
-            .WithOrigins(
-                "http://localhost:4200",
-                "https://voidcat.co.uk")
-            .SetIsOriginAllowedToAllowWildcardSubdomains()
+            .AllowAnyOrigin()
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
@@ -97,7 +94,7 @@ if (app.Environment.IsDevelopment())
 
 // Middleware
 app.UseHttpsRedirection();
-app.UseCors("AllowSpecificOrigins");
+app.UseCors("AllowAllOrigins");
 app.UseAuthorization();
 
 // Routing
