@@ -4,4 +4,5 @@ public class TarotReadingRequestCard
 {
     public string Name { get; set; }
     public int DisplayOrder { get; set; }
+    public bool Reversed { get; set; }
 }
